@@ -1,0 +1,40 @@
+﻿<Window x:Class="WPF4.Commands"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF4"
+        mc:Ignorable="d"
+        Title="Commands" Height="200" Width="250">
+    <Window.CommandBindings>
+        <CommandBinding x:Name="Cut" Command="ApplicationCommands.Cut" CanExecute="Cut_CanExecute" Executed="Cut_Executed"/>
+        <CommandBinding x:Name="Copy" Command="ApplicationCommands.Copy" CanExecute="Copy_CanExecute"  Executed="Copy_Executed"/>
+        <CommandBinding x:Name="Paste" Command="ApplicationCommands.Paste" CanExecute="Paste_CanExecute"  Executed="Paste_Executed"/>
+        <CommandBinding x:Name="Exit" Command="local:CustomCommands.Exit" CanExecute="Exit_CanExecute" Executed="Exit_Executed"/>
+        <CommandBinding x:Name="Submit" Command="local:CustomCommands.Submit" CanExecute="Submit_CanExecute" Executed="Submit_Executed"/>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Submit" Command="local:CustomCommands.Submit"/>
+                <MenuItem Header="Exit" Command="local:CustomCommands.Exit"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Button Content="Cut" Command="ApplicationCommands.Cut" Width="60"/>
+            <Button Content="Copy" Command="ApplicationCommands.Copy" Width="60"/>
+            <Button Content="Paste" Command="ApplicationCommands.Paste" Width="60">
+                <Button.ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="Paste" FontWeight="Bold"/>
+                        <Border BorderBrush="Black" BorderThickness="0 1 0 0" Margin="0 8"/>
+                        <TextBlock Text="Paste clipboard into text"/>
+                        <Button Content="A+" Width="40"/>
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+        <Button Content="Submit" Command="local:CustomCommands.Submit" ToolTip="Submit the document" ToolTipService.ShowDuration="1000" DockPanel.Dock="Bottom"/>
+        <TextBox x:Name="txtInput" TextWrapping="Wrap" AcceptsReturn="True"/>
+    </DockPanel>
+</Window>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="WPF2.BindingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF2"
+        mc:Ignorable="d"
+        Title="BindingWindow" Height="400" Width="500">
+    <StackPanel Margin="0 10">
+        <TextBox Name="txtValue"/>
+        <WrapPanel>
+            <TextBlock Text="Value: " FontWeight="Bold"/>
+            <TextBlock Name="txtValueBind"/>
+            <!--<TextBlock Text="{Binding Path=Text, ElementName=txtValue}"/>-->
+        </WrapPanel>
+        <WrapPanel>
+            <TextBox Text="{Binding Width}" Width="50"/>
+            <TextBlock Text=" x "/>
+            <TextBox Text="{Binding Height}" Width="50"/>
+        </WrapPanel>
+        <WrapPanel Margin="0 10">
+            <TextBlock Text="Title: "/>
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+        </WrapPanel>
+        <WrapPanel Margin="0 10" HorizontalAlignment="Center">
+            <Button Name="btnAdd" Click="btnAdd_Click" Content="Add" Width="70" Margin="10 0"/>
+            <Button Name="btnRemove" Click="btnRemove_Click"  Content="Remove" Width="70" Margin="10 0"/>
+            <Button Name="btnChange" Click="btnChange_Click"  Content="Change" Width="70" Margin="10 0"/>
+        </WrapPanel>
+        <ListBox Name="lstCharacters" DisplayMemberPath="Name"/>
+    </StackPanel>
+</Window>

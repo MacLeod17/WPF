@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WPF1": {
+      "commandName": "Project",
+      "commandLineArgs": "80"
+    }
+  }
+}
