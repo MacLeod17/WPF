@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Match_Game</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\card.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\card.png" />
+    <Resource Include="Resources\card.wav" />
+  </ItemGroup>
+
+</Project>
