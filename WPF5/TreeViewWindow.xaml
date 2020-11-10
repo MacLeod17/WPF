@@ -1,0 +1,21 @@
+﻿<Window x:Class="WPF5.TreeViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF5"
+        mc:Ignorable="d"
+        Title="TreeViewWindow" Height="200" Width="250">
+    <Grid>
+        <TreeView x:Name="trvMenu">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Items}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Icon}" Width="12"/>
+                        <TextBlock Text="{Binding Title}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</Window>
