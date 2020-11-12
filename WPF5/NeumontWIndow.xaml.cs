@@ -13,11 +13,10 @@ using System.Windows.Shapes;
 
 namespace WPF5
 {
-    /// <summary>
-    /// Interaction logic for NeumontWIndow.xaml
-    /// </summary>
     public partial class NeumontWindow : Window
     {
+        private BaseItem selected;
+
         public NeumontWindow()
         {
             InitializeComponent();
@@ -33,24 +32,58 @@ namespace WPF5
             cohort34.Students.Add(new Student() { Name = "Ryder", ID = 78 });
             cohort34.Students.Add(new Student() { Name = "Adam", ID = 32 });
             cohorts.Add(cohort34);
+
+            trvNeumont.ItemsSource = cohorts;
         }
 
-        public class Cohort
+        private void trvNeumont_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            public string Name { get; set; }
-            public ObservableCollection<Student> Students { get; set; }
+            TreeView treeView = sender as TreeView;
+            selected = treeView.SelectedItem as BaseItem;
 
-            public Cohort()
+            //MessageBox.Show(selected.ToString());
+        }
+
+        private void Submit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = selected is Cohort;
+        }
+
+        private void Submit_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            if (selected is Cohort cohort && !string.IsNullOrEmpty(txtName.Text))
             {
-                Students = new ObservableCollection<Student>();
+                cohort.Students.Add(new Student() { Name = txtName.Text, ID = 45 });
+                txtName.Text = "";
             }
         }
+    }
 
-        public class Student
+    public class BaseItem
+    {
+
+    }
+
+    public class Cohort : BaseItem
+    {
+        public string Name { get; set; }
+        public ObservableCollection<Student> Students { get; set; }
+
+        public Cohort()
         {
-            public string Name { get; set; }
-            public int ID { get; set; }
-
+            Students = new ObservableCollection<Student>();
         }
+    }
+
+    public class Student : BaseItem
+    {
+        public string Name { get; set; }
+        public int ID { get; set; }
+
     }
 }

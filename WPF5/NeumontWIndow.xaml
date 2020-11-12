@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF5"
         mc:Ignorable="d"
-        Title="NeumontWIndow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="NeumontWIndow" Height="300" Width="420">
+    <Window.Resources>
+        <CommandBinding x:Name="Submit" 
+                        x:Key="Submit"
+                        Command="local:CustomCommands.Submit"
+                        CanExecute="Submit_CanExecute"
+                        Executed="Submit_Executed"/>
+    </Window.Resources>
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Label Content="Name: "/>
+            <TextBox x:Name="txtName" Width="120" VerticalAlignment="Center"/>
+            <Button x:Name="btnSubmit" 
+                    Content="Submit" 
+                    Click="btnSubmit_Click"
+                    Width="80" 
+                    Margin="5 5"/>
+        </StackPanel>
+        <TreeView x:Name="trvNeumont" 
+                  BorderBrush="Black" 
+                  BorderThickness="5" 
+                  DockPanel.Dock="Top"
+                  SelectedItemChanged="trvNeumont_SelectedItemChanged">
+            <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type local:Cohort}"
+                                          ItemsSource="{Binding Students}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/people.png" Width="16"/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type local:Student}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/person.png" Width="16"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding ID}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+    </DockPanel>
 </Window>

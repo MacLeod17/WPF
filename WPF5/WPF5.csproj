@@ -7,10 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\drive.png" />
+    <None Remove="Resources\file.png" />
+    <None Remove="Resources\folder.png" />
+    <None Remove="Resources\people.png" />
+    <None Remove="Resources\person.png" />
     <None Remove="Resources\sus.bmp" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\drive.png" />
+    <Resource Include="Resources\file.png" />
+    <Resource Include="Resources\folder.png" />
+    <Resource Include="Resources\people.png" />
+    <Resource Include="Resources\person.png" />
     <Resource Include="Resources\sus.bmp" />
   </ItemGroup>
 
